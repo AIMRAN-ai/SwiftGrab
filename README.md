@@ -99,9 +99,10 @@ dotnet run
 
 1. Open `chrome://extensions` → Enable *Developer mode*
 2. Click *Load unpacked* → select the `BrowserExtension/` folder
-3. Note your extension ID; paste it into `BrowserExtension/native-host/com.swiftgrab.host.json`
-4. Copy `com.swiftgrab.host.json` to `%LOCALAPPDATA%\Google\Chrome\User Data\NativeMessagingHosts\`
-5. Right-click any download link → **Download with SwiftGrab** ⚡
+3. Note your extension ID; update the placeholder `YOUR_EXTENSION_ID` in `BrowserExtension/native-host/com.swiftgrab.host.json`
+4. Also update the `path` in that file to point to your actual `SwiftGrab.exe` installation path
+5. Copy `com.swiftgrab.host.json` to `%LOCALAPPDATA%\Google\Chrome\User Data\NativeMessagingHosts\`
+6. Right-click any download link → **Download with SwiftGrab** ⚡
 
 ---
 
@@ -113,5 +114,4 @@ dotnet run
 | `MahApps.Metro` | Modern WPF window chrome |
 | `MaterialDesignThemes` | Material Design controls |
 | `MonoTorrent` | BitTorrent engine |
-| `Newtonsoft.Json` | JSON serialisation |
 | `YoutubeExplode` | YouTube stream extraction |

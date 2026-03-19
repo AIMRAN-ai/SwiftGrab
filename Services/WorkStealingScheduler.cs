@@ -57,8 +57,7 @@ public sealed class WorkStealingScheduler : TaskScheduler, IDisposable
                     Monitor.Wait(_tasks);
 
                 if (_disposed) return;
-                if (_tasks.First == null) continue;
-                task = _tasks.First.Value;
+                task = _tasks.First!.Value;
                 _tasks.RemoveFirst();
             }
             TryExecuteTask(task);

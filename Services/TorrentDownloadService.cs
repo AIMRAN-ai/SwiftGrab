@@ -96,7 +96,7 @@ public class TorrentDownloadService : IDisposable
     public void UpdateStats(TorrentInfo info)
     {
         if (!_managers.TryGetValue(info, out var mgr)) return;
-        info.DownloadedBytes = (long)(mgr.Torrent?.Size * mgr.Progress / 100.0 ?? 0);
+        info.DownloadedBytes = (long)((mgr.Torrent?.Size ?? 0) * (mgr.Progress / 100.0));
         info.SpeedBytesPerSec = mgr.Monitor.DownloadRate;
         info.Seeders = mgr.Peers.Seeds;
         info.Leechers = mgr.Peers.Leechs;
