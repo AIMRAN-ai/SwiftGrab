@@ -37,7 +37,16 @@ public static class ProtocolHandler
             return null;
 
         var parsed = new Uri(uri);
-        var query = System.Web.HttpUtility.ParseQueryString(parsed.Query);
-        return query["url"];
+        // Parse query string without System.Web dependency
+        foreach (var pair in parsed.Query.TrimStart('?').Split('&', StringSplitOptions.RemoveEmptyEntries))
+        {
+            var idx = pair.IndexOf('=');
+            if (idx < 0) continue;
+            string key = Uri.UnescapeDataString(pair[..idx]);
+            string value = Uri.UnescapeDataString(pair[(idx + 1)..]);
+            if (key.Equals("url", StringComparison.OrdinalIgnoreCase))
+                return value;
+        }
+        return null;
     }
 }

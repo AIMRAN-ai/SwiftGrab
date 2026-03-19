@@ -58,6 +58,8 @@ public class MainViewModel : System.ComponentModel.INotifyPropertyChanged
     public RelayCommand RemoveCommand { get; }
     public RelayCommand BrowseSavePathCommand { get; }
 
+    private const int MaxTorrentNameLength = 40;
+
     public MainViewModel()
     {
         _savePath = Path.Combine(
@@ -158,7 +160,7 @@ public class MainViewModel : System.ComponentModel.INotifyPropertyChanged
         {
             MagnetOrPath = magnetOrPath,
             SavePath = SavePath,
-            Name = magnetOrPath.Length > 40 ? magnetOrPath[..40] + "…" : magnetOrPath
+            Name = magnetOrPath.Length > MaxTorrentNameLength ? magnetOrPath[..MaxTorrentNameLength] + "…" : magnetOrPath
         };
 
         StatusMessage = $"Adding torrent: {info.Name}";

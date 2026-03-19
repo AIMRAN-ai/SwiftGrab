@@ -10,7 +10,7 @@ namespace SwiftGrab.Services;
 public class SegmentPerformanceMonitor
 {
     private readonly ConcurrentDictionary<int, double> _speeds = new();
-    private const double Alpha = 0.3; // EMA smoothing factor
+    private const double Alpha = 0.3; // EMA smoothing: balances responsiveness vs. stability
 
     public void RecordBytes(int segmentIndex, long bytes, TimeSpan elapsed)
     {

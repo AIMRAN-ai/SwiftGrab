@@ -13,7 +13,7 @@ namespace SwiftGrab.Services;
 /// </summary>
 public class SegmentDownloader
 {
-    private const int BufferSize = 81920; // 80 KB
+    private const int BufferSize = 81920; // 80 KiB
 
     public async Task DownloadSegmentAsync(
         string url,
